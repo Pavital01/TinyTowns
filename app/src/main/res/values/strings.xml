@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TinyTowns</string>
+    <string name="building_name_abbey">Abbey</string>
+    <string name="building_name_almshouse">Almshouse</string>
+    <string name="building_name_bakery">Bakery</string>
+    <string name="building_name_bank">Bank</string>
+    <string name="building_name_chapel">Chapel</string>
+    <string name="resource_wood_name">Wood</string>
+    <string name="resource_brick_name">Brick</string>
+    <string name="resource_stone_name">Stone</string>
+    <string name="resource_wheat_name">Wheat</string>
+    <string name="resource_glass_name">Glass</string>
+</resources>

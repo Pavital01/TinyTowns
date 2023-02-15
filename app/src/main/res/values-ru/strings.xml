@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TinyTowns</string>
+    <string name="building_name_abbey">Аббатство</string>
+    <string name="building_name_almshouse">Приют</string>
+    <string name="building_name_bakery">Пекарня</string>
+    <string name="building_name_bank">Bank</string>
+    <string name="building_name_chapel">Chapel</string>
+    <string name="resource_wood_name">Дерево</string>
+    <string name="resource_brick_name">Кирпич</string>
+    <string name="resource_stone_name">Камень</string>
+    <string name="resource_wheat_name">Пшеница</string>
+    <string name="resource_glass_name">Стекло</string>
+</resources>
