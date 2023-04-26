@@ -15,7 +15,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/start_background"
-        android:onClick="goToGame"
 
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
