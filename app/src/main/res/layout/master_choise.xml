@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/master_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TEST"
+
+        tools:ignore="MissingConstraints"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/master_info"
+
+        tools:ignore="MissingConstraints">
+
+        <View
+            style="@style/master_choice_cell"
+            android:background="@color/resource_wood_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resource_wood_name" />
+
+        <View
+            style="@style/master_choice_cell"
+            android:background="@color/resource_brick_color"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resource_brick_name" />
+
+        <View
+            style="@style/master_choice_cell"
+            android:background="@color/resource_stone_color"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resource_stone_name" />
+
+        <View
+            style="@style/master_choice_cell"
+            android:background="@color/resource_wheat_color"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resource_wheat_name" />
+
+        <View
+            style="@style/master_choice_cell"
+            android:background="@color/resource_glass_color"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resource_glass_name" />
+
+        <Button
+            android:id="@+id/toGameButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="submit" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

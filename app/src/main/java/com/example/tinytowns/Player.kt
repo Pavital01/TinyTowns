@@ -2,7 +2,7 @@ package com.example.tinytowns
 
 import android.view.View
 
-class Player() : java.io.Serializable{
+class Player() : Cloneable{
     lateinit var name: String
     var number : Int
 
@@ -15,5 +15,11 @@ class Player() : java.io.Serializable{
     constructor(name : String) : this() {
         this.name = name
     }
-//    val field: Field()
+    public override fun clone(): Player {
+        val newPlayer = Player()
+        newPlayer.name = name
+        newPlayer.number = number
+        newPlayer.field = field.toList() as MutableList<View>
+        return newPlayer
+    }
 }
