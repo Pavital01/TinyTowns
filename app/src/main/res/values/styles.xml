@@ -5,8 +5,10 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_columnWeight">1</item>
         <item name="android:layout_rowWeight">1</item>
-        <item name="android:background">@drawable/cell_game_example_border</item>
+        <!--<item name="android:background">@drawable/cell_game_example_border</item>-->
+        <item name="android:background">@color/cell</item>
     </style>
+
     <style name="master_choice_cell">
         <item name="android:layout_width">50dp</item>
         <item name="android:layout_height">50dp</item>

@@ -15,11 +15,11 @@ class Player() : Cloneable{
     constructor(name : String) : this() {
         this.name = name
     }
-    public override fun clone(): Player {
-        val newPlayer = Player()
-        newPlayer.name = name
-        newPlayer.number = number
-        newPlayer.field = field.toList() as MutableList<View>
-        return newPlayer
-    }
+//    public override fun clone(): Player {
+//        val newPlayer = Player()
+//        newPlayer.name = name
+//        newPlayer.number = number
+//        newPlayer.field = field.toList() as MutableList<View>
+//        return newPlayer
+//    }
 }

@@ -3,7 +3,8 @@ package com.example.tinytowns
 import android.view.View
 
 class Field() : java.io.Serializable{
-    var cells: MutableList<View> = mutableListOf()
+    var cells : MutableList<Cell> = mutableListOf()
+//    var cells: MutableList<View> = mutableListOf()
 
 //    init {
 //        for (i in 0..15) {
