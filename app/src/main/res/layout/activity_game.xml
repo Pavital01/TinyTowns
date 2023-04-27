@@ -116,7 +116,7 @@
            android:orientation="horizontal"
            >
            <Button
-               android:id="@+id/btn1"
+               android:id="@+id/Buildings"
                android:layout_width="0dp"
                android:layout_height="wrap_content"
                android:layout_weight="1"
@@ -125,6 +125,7 @@
 
            <!-- Construction button -->
            <Button
+               android:id="@+id/infoPlayerButton"
                android:layout_width="0dp"
                android:layout_height="wrap_content"
                android:layout_weight="1"
@@ -139,12 +140,13 @@
             android:orientation="horizontal"
        >
             <Button
+                android:id="@+id/nextPlayerButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Next turn"
                 android:textSize="28dp"
-                android:onClick="nextPlayer"/>
+                />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

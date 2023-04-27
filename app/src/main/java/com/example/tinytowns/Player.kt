@@ -1,10 +1,12 @@
 package com.example.tinytowns
 
+import android.view.View
+
 class Player() : java.io.Serializable{
     lateinit var name: String
     var number : Int
 
-    var field : Field = Field()
+    var field : MutableList<View> = mutableListOf()
 
     init {
         name = "Default"
