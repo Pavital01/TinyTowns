@@ -3,6 +3,7 @@ package com.example.tinytowns
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class Game() : AppCompatActivity() {
+    lateinit var defaultBackground : Drawable
+    lateinit var actual_resurse : Drawable
     lateinit var count_players: Integer
     val countCells = 16 - 1
     var players = mutableListOf<Player>()
@@ -24,6 +27,11 @@ class Game() : AppCompatActivity() {
     lateinit var masterInfo: TextView
     private lateinit var gameView: View
     private lateinit var masterChoiseView: View
+    private lateinit var choiceWood : View
+    private lateinit var choiceBrick : View
+    private lateinit var choiceStone : View
+    private lateinit var choiceWheat : View
+    private lateinit var choiceGlass : View
 
     private lateinit var playersNames: Array<String>
 
@@ -38,10 +46,11 @@ class Game() : AppCompatActivity() {
     @SuppressLint("MissingInflatedId", "ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        //объекты layout-ов для переключения
         gameView = layoutInflater.inflate(R.layout.activity_game, null)
         masterChoiseView = layoutInflater.inflate(R.layout.master_choise, null)
 
+        //связываются введённые имена и List<Player>
         playersNames = intent.getSerializableExtra("players") as Array<String>
         var count_players = playersNames.size
         for (i in 1..count_players) {
@@ -49,13 +58,15 @@ class Game() : AppCompatActivity() {
             players[i - 1].number = i
         }
 
+        //Устанавливаются изначальные данные
         actual_player = players[0]
         master = players[0]
+
 
         setContentView(masterChoiseView)
         val masterInfo: TextView? = masterChoiseView.findViewById(R.id.master_info)
         if (masterInfo != null)
-            masterInfo?.text = "Master is ${actual_player.name}"
+            masterInfo?.text = "Master is ${master.name}"
         else println("Nea")
 
         toGame = masterChoiseView.findViewById(R.id.toGameButton)
@@ -68,7 +79,7 @@ class Game() : AppCompatActivity() {
 
 
 //        println("Master and actual_player is ${master == actual_player}")
-
+//      Связывается List<View> с view из layout
         gameBoard.add(gameView.findViewById(R.id.cell_1_1))
         gameBoard.add(gameView.findViewById(R.id.cell_1_2))
         gameBoard.add(gameView.findViewById(R.id.cell_1_3))
@@ -94,7 +105,9 @@ class Game() : AppCompatActivity() {
             }
         }
 
-        val txt: TextView? = findViewById(R.id.info_message)
+
+
+        val txt: TextView? = gameView.findViewById(R.id.info_message)
         if (txt != null)
             txt?.text = actual_player.name
         else println("Nea1")
@@ -102,18 +115,61 @@ class Game() : AppCompatActivity() {
 
         for (i in gameBoard) {
             i.setOnClickListener {
-                it.setBackgroundResource(R.color.resource_wood_color)
+                it.background = actual_resurse
             }
         }
+        choiceWood = masterChoiseView.findViewById(R.id.choice_wood)
+        choiceBrick = masterChoiseView.findViewById(R.id.choice_brick)
+        choiceStone = masterChoiseView.findViewById(R.id.choice_stone)
+        choiceWheat = masterChoiseView.findViewById(R.id.choice_wheat)
+        choiceGlass = masterChoiseView.findViewById(R.id.choice_glass)
+
+        choiceWood.setOnClickListener{
+            actual_resurse = getDrawable(R.color.resource_wood_color)!!
+            gameBoard[0].background = actual_resurse
+        }
+        choiceBrick.setOnClickListener{
+            actual_resurse = getDrawable(R.color.resource_brick_color)!!
+            gameBoard[0].background = actual_resurse
+        }
+        choiceStone.setOnClickListener{
+            actual_resurse = getDrawable(R.color.resource_stone_color)!!
+            gameBoard[0].background = actual_resurse
+        }
+        choiceWheat.setOnClickListener{
+            actual_resurse = getDrawable(R.color.resource_wheat_color)!!
+            gameBoard[0].background = actual_resurse
+        }
+        choiceGlass.setOnClickListener{
+            actual_resurse = getDrawable(R.color.resource_glass_color)!!
+            gameBoard[0].background = actual_resurse
+        }
+
 
         //Listeners
         toNextPlayer = gameView.findViewById(R.id.nextPlayerButton)
         toNextPlayer.setOnClickListener {
             saveBoard()
-            actual_player = players[(actual_player.number) % count_players]
-            //println("Actual player number ${actual_player.number}")
-            loadGame()
+            if (actual_player  == players.last()){
+//                println("Master and actual_player is ${master == actual_player}")
+                master = players[(master.number) % players.size]
+                setContentView(masterChoiseView)
+                if (masterInfo != null)
+                    masterInfo?.text = "Master is ${master.name}"
+                else println("Nea")
+                actual_player = players[(actual_player.number) % count_players]
+                toGame.setOnClickListener{
+                    setContentView(gameView)
+                    loadGame()
+                }
+            }
+            else{
+                actual_player = players[(actual_player.number) % count_players]
+                //println("Actual player number ${actual_player.number}")
+                loadGame()
 //            println("after load")
+            }
+
 
         }
         infoPlayer = gameView.findViewById(R.id.infoPlayerButton)
@@ -129,14 +185,6 @@ class Game() : AppCompatActivity() {
         }
     }
 
-
-    fun ediText(view: View) {
-        val txt: TextView? = gameView.findViewById(R.id.info_message)
-        if (txt != null)
-            txt?.text = getString(R.string.building_name_abbey)
-        else println("Nea")
-    }
-
     private fun loadGame(){
 //        println("load actualPlayer is ${actual_player.number}")
         loadBoard()
@@ -144,10 +192,6 @@ class Game() : AppCompatActivity() {
         if (txt != null)
             txt?.text = actual_player.name
         else println("Nea1")
-    if (actual_player  == players.last()){
-        println("Master and actual_player is ${master == actual_player}")
-        master = players[(actual_player.number) % players.size]
-    }
 
     }
     private fun saveBoard(){

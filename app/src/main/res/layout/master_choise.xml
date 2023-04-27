@@ -22,6 +22,7 @@
         tools:ignore="MissingConstraints">
 
         <View
+            android:id="@+id/choice_wood"
             style="@style/master_choice_cell"
             android:background="@color/resource_wood_color" />
 
@@ -31,6 +32,7 @@
             android:text="@string/resource_wood_name" />
 
         <View
+            android:id="@+id/choice_brick"
             style="@style/master_choice_cell"
             android:background="@color/resource_brick_color"
 
@@ -42,6 +44,7 @@
             android:text="@string/resource_brick_name" />
 
         <View
+            android:id="@+id/choice_stone"
             style="@style/master_choice_cell"
             android:background="@color/resource_stone_color"
 
@@ -53,6 +56,7 @@
             android:text="@string/resource_stone_name" />
 
         <View
+            android:id="@+id/choice_wheat"
             style="@style/master_choice_cell"
             android:background="@color/resource_wheat_color"
 
@@ -64,6 +68,7 @@
             android:text="@string/resource_wheat_name" />
 
         <View
+            android:id="@+id/choice_glass"
             style="@style/master_choice_cell"
             android:background="@color/resource_glass_color"
 
