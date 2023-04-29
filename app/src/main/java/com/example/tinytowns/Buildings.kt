@@ -1,110 +1,185 @@
 package com.example.tinytowns
 
+
 enum class Buildings {
+
     Abbey{
-        override val buildName = "Abbey"
-        override val buildColor = "orange"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "orange"
+        val defaultBackground = R.color.cell
+//         val matrixOrigin : Array<Array<View>> = Array(2)
+         fun GGG(){
+
+        }
     },
     Almshouse{
-        override val buildName = "Almshouse"
-        override val buildColor = "green"
+         val buildName = R.string.building_name_almshouse
+         val buildColor = "green"
+         fun GGG(){
+
+        }
     },
     Bakery{
-        override val buildName = "Bakery"
-        override val buildColor = "yellow"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "yellow"
+         fun GGG(){
+
+        }
     },
     Bank{
-        override val buildName = "Bank"
-        override val buildColor = "black"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "black"
+         fun GGG(){
+
+        }
     },
     Chapel{
-        override val buildName = "Chapel"
-        override val buildColor = "orange"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "orange"
+         fun GGG(){
+
+        }
     },
     Cloister{
-        override val buildName = "Cloister"
-        override val buildColor = "orange"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "orange"
+         fun GGG(){
+
+        }
     },
     Cottage{
-        override val buildName = "Cottage"
-        override val buildColor = "blue"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "blue"
+         fun GGG(){
+
+        }
     },
     Factory{
-        override val buildName = "Factory"
-        override val buildColor = "black"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "black"
+         fun GGG(){
+
+        }
     },
     Farm{
-        override val buildName = "Farm"
-        override val buildColor = "red"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "red"
+         fun GGG(){
+
+        }
     },
     FeastHall{
-        override val buildName = "Feast Hall"
-        override val buildColor = "green"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "green"
+         fun GGG(){
+
+        }
     },
     Fountain{
-        override val buildName = "Fountain"
-        override val buildColor = "gray"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "gray"
+         fun GGG(){
+
+        }
     },
     Granary{
-        override val buildName = "Granary"
-        override val buildColor = "red"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "red"
+         fun GGG(){
+
+        }
     },
     Greenhouse{
-        override val buildName = "Greenhouse"
-        override val buildColor = "red"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "red"
+         fun GGG(){
+
+        }
     },
     Inn{
-        override val buildName = "Inn"
-        override val buildColor = "green"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "green"
+         fun GGG(){
+
+        }
     },
     Market{
-        override val buildName = "Market"
-        override val buildColor = "yellow"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "yellow"
+         fun GGG(){
+
+        }
     },
     Millstone{
-        override val buildName = "Millstone "
-        override val buildColor = "gray"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "gray"
+         fun GGG(){
+
+        }
     },
     Orchard{
-        override val buildName = "Orchard"
-        override val buildColor = "red"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "red"
+         fun GGG(){
+
+        }
     },
     Shed{
-        override val buildName = "Shed"
-        override val buildColor = "gray"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "gray"
+         fun GGG(){
+
+        }
     },
     Tailor{
-        override val buildName = "Tailor"
-        override val buildColor = "yellow"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "yellow"
+         fun GGG(){
+
+        }
     },
     Tavern{
-        override val buildName = "Tavern"
-        override val buildColor = "green"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "green"
+         fun GGG(){
+
+        }
     },
     Temple{
-        override val buildName = "Temple"
-        override val buildColor = "orange"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "orange"
+         fun GGG(){
+
+        }
     },
     Theater{
-        override val buildName = "Theater"
-        override val buildColor = "yellow"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "yellow"
+         fun GGG(){
+
+        }
     },
     TradingPost{
-        override val buildName = "Trading Post"
-        override val buildColor = "black"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "black"
+         fun GGG(){
+
+        }
     },
     Warehouse{
-        override val buildName = "Warehouse"
-        override val buildColor = "black"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "black"
+         fun GGG(){
+
+        }
     },
     Well{
-        override val buildName = "Fountain"
-        override val buildColor = "gray"
+         val buildName = R.string.building_name_abbey
+         val buildColor = "gray"
+         fun GGG(){
+
+        }
     };
-
-
-    abstract val buildName : String
-    abstract val buildColor : String
 
 
 }

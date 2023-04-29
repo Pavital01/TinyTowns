@@ -15,8 +15,6 @@
         android:columnCount="4"
         app:layout_constraintDimensionRatio="1:1"
         android:useDefaultMargins="true"
-
-
         >
         <ImageView
             android:id="@+id/cell_1_1"
@@ -96,9 +94,8 @@
         android:textSize="32dp"
         android:gravity="center"
         android:padding="70dp"
-        >
+        />
 
-    </TextView>
     <LinearLayout
         android:id="@+id/button_container"
         android:layout_width="match_parent"
@@ -108,45 +105,28 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="horizontal"
-           >
-           <Button
-               android:id="@+id/Buildings"
-               android:layout_width="0dp"
-               android:layout_height="wrap_content"
-               android:layout_weight="1"
-               android:text="Buildings"
-               android:textSize="28dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        >
 
            <!-- Construction button -->
-           <Button
-               android:id="@+id/infoPlayerButton"
-               android:layout_width="0dp"
-               android:layout_height="wrap_content"
-               android:layout_weight="1"
-               android:onClick="infoPlayer"
-               android:text="Construction"
-               android:textSize="28dp"/>
-
-       </LinearLayout>
-        <LinearLayout
+        <Button
+            android:id="@+id/Buildings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-       >
-            <Button
-                android:id="@+id/nextPlayerButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Next turn"
-                android:textSize="28dp"
-                />
-        </LinearLayout>
+            android:layout_weight="1"
+            android:onClick="infoPlayer"
+            android:text="Buildings"
+            android:textSize="28dp"
+            />
+
+        <Button
+            android:id="@+id/nextPlayerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Next turn"
+            android:textSize="28dp"
+          />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
