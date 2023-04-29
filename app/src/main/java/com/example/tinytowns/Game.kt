@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -21,7 +22,7 @@ class Game() : AppCompatActivity() {
     var players = mutableListOf<Player>()
     var actual_player: Player = Player("Default_1")
     lateinit var master : Player
-    var gameBoard: MutableList<View> = mutableListOf()
+    var gameBoard: MutableList<ImageView> = mutableListOf()
     var tempGameBoard: MutableList<View> = mutableListOf()
     lateinit var toNextPlayer: Button
     lateinit var infoPlayer: Button
@@ -36,12 +37,7 @@ class Game() : AppCompatActivity() {
     private lateinit var choiceWheat : View
     private lateinit var choiceGlass : View
     private var touch : Boolean = false
-    val longClickListener = View.OnLongClickListener { view ->
-        view.alpha = opacity
-        println("YES-YES")
 
-        true // Возвращаем true, чтобы показать, что событие было обработано
-    }
 
 
 
@@ -62,7 +58,7 @@ class Game() : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
 //        val test : Buildings = Buildings.Abbey.
-        val defaultBackground = getDrawable(R.color.cell)
+
 
         super.onCreate(savedInstanceState)
         //объекты layout-ов для переключения
@@ -80,6 +76,18 @@ class Game() : AppCompatActivity() {
         //Устанавливаются изначальные данные
         actual_player = players[0]
         master = players[0]
+        val defaultBackground = getDrawable(R.color.cell)
+        val selected = getDrawable(R.drawable.selected)
+        val longClickListener = View.OnLongClickListener { view ->
+//        view.alpha = opacity
+
+            if ((view.background != defaultBackground) and (!touch))  {
+                var view1 = view as ImageView
+                view1.setImageDrawable(selected)
+                println("YES-YES")
+            }
+            true // Возвращаем true, чтобы показать, что событие было обработано
+        }
 
 
         setContentView(masterChoiseView)
@@ -173,9 +181,11 @@ class Game() : AppCompatActivity() {
 //
         for (i in gameBoard) {
             i.setOnClickListener {
+                i.setImageDrawable(null)
                 i.alpha = 1f
-                touch = true
+
                 if (it.background == defaultBackground) {
+                    touch = true
                     if(previousView != null){
                         previousView!!.background = defaultBackground
                         previousView = it
@@ -232,7 +242,7 @@ class Game() : AppCompatActivity() {
     }
     private fun saveBoard(){
         for (i in 0..countCells) {
-            gameBoard.get(i).alpha = 1f
+            gameBoard.get(i).setImageDrawable(null)
             actual_player.field.get(i).background = gameBoard.get(i).background
 
         }

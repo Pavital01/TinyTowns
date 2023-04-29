@@ -11,6 +11,7 @@
     <color name="resource_brick_color">#DF3720</color>
     <color name="resource_stone_color">#817F7A</color>
     <color name="resource_wheat_color">#FBB439</color>
-    <color name="resource_glass_color">#FF3700B3</color>
+    <color name="resource_glass_color">#3BA1A6</color>
     <color name="cell">#00E60B</color>
+    <color name="cell2">#077FFF</color>
 </resources>
