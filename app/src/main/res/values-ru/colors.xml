@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="resource_wood_color">#5E2B28</color>
+    <color name="resource_brick_color">#DF3720</color>
+    <color name="resource_stone_color">#817F7A</color>
+    <color name="resource_wheat_color">#FBB439</color>
+    <color name="resource_glass_color">#3BA1A6</color>
+    <color name="cell">#00E60B</color>
+    <color name="cell2">#077FFF</color>
 </resources>

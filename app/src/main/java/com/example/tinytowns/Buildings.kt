@@ -176,6 +176,7 @@ enum class Buildings {
     Well{
          val buildName = R.string.building_name_abbey
          val buildColor = "gray"
+//        val matrix = Array<Array<View>> = arrayOf(Array())
          fun GGG(){
 
         }

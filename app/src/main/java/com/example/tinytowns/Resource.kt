@@ -1,20 +1,28 @@
 package com.example.tinytowns
 
-enum class Resource {
+enum class Resources {
+    Default{
+        val background = R.color.cell
+    },
     Wood{
-        override val buildName = "Wood"
+        val background = R.color.resource_wood_color
+         val nameResource = "Wood"
     },
     Brick{
-        override val buildName = "Wood"
+        val background = R.color.resource_brick_color
+         val nameResource = "Wood"
     },
     Stone{
-        override val buildName = "Wood"
+        val background = R.color.resource_stone_color
+         val nameResource = "Wood"
     },
     Wheat{
-        override val buildName = "Wood"
+        val background = R.color.resource_wheat_color
+         val nameResource = "Wood"
     },
     Glass{
-        override val buildName = "Glass"
+        val background = R.color.resource_wheat_color
+         val nameResource = "Glass"
     };
-    abstract val buildName : String
+
 }

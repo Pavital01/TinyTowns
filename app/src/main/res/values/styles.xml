@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="cell_view">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
         <item name="android:layout_columnWeight">1</item>
         <item name="android:layout_rowWeight">1</item>
+<!--        <item name="android:scaleType">centerCrop</item>-->
         <!--<item name="android:background">@drawable/cell_game_example_border</item>-->
         <item name="android:background">@color/cell</item>
+<!--        <item name="android:adjustViewBounds">true</item>-->
+    </style>
+    <style name="cell_view2">
+        <item name="android:layout_column">1</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+<!--        <item name="android:scaleType">fitXY</item>-->
+        <!--<item name="android:background">@drawable/cell_game_example_border</item>-->
+        <item name="android:background">@drawable/cell_game_example_border</item>
     </style>
 
     <style name="master_choice_cell">
         <item name="android:layout_width">50dp</item>
         <item name="android:layout_height">50dp</item>
-
+    </style>
+    <style name="buildings_menu_views">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">100dp</item>
     </style>
 </resources>
