@@ -1,18 +1,17 @@
 package com.example.tinytowns
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
 
 class NewGame : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_game)
-
         val playersLayout = findViewById<LinearLayout>(R.id.playersLayout)
         val buttonsLayout = findViewById<LinearLayout>(R.id.buttonsLayout)
         val startGameButton = findViewById<Button>(R.id.startGameButton)
@@ -60,7 +59,6 @@ class NewGame : AppCompatActivity() {
                 }
             }
         }
-
         startGameButton.setOnClickListener {
             // Start the game with the selected players
             val intent = Intent(this, Game::class.java)

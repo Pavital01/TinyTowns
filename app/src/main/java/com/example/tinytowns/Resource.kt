@@ -1,28 +1,59 @@
 package com.example.tinytowns
 
-enum class Resources {
+import android.content.Context
+import android.graphics.drawable.Drawable
+
+
+
+enum class Resources{
     Default{
-        val background = R.color.cell
+        override val background = R.color.cell
+        override fun getBackground(context: Context) : Drawable{
+            val drawable = context.getDrawable(background)
+            return drawable!!
+        }
     },
     Wood{
-        val background = R.color.resource_wood_color
+        override val background = R.color.resource_wood_color
          val nameResource = "Wood"
+        override fun getBackground(context: Context) : Drawable{
+            val drawable = context.getDrawable(background)
+            return drawable!!
+        }
     },
     Brick{
-        val background = R.color.resource_brick_color
+        override val background = R.color.resource_brick_color
          val nameResource = "Wood"
+        override fun getBackground(context: Context) : Drawable{
+            val drawable = context.getDrawable(background)
+            return drawable!!
+        }
     },
     Stone{
-        val background = R.color.resource_stone_color
+        override val background = R.color.resource_stone_color
          val nameResource = "Wood"
+        override fun getBackground(context: Context) : Drawable{
+            val drawable = context.getDrawable(background)
+            return drawable!!
+        }
     },
     Wheat{
-        val background = R.color.resource_wheat_color
+        override val background = R.color.resource_wheat_color
          val nameResource = "Wood"
+        override fun getBackground(context: Context) : Drawable{
+            val drawable = context.getDrawable(background)
+            return drawable!!
+        }
     },
     Glass{
-        val background = R.color.resource_wheat_color
+        override val background = R.color.resource_glass_color
          val nameResource = "Glass"
+        override fun getBackground(context: Context) : Drawable{
+            val drawable = context.getDrawable(background)
+            return drawable!!
+        }
     };
-
+    abstract val background : Int
+    abstract fun getBackground(context: Context) : Drawable
+       
 }

@@ -10,12 +10,27 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class Game() : AppCompatActivity() {
+    val randomBuildings : List<Buildings> = mutableListOf(
+//        Buildings.Cottage,
+//        Buildings.Bank,
+//        Buildings.Theater,
+//        Buildings.Almshouse,
+//        Buildings.Abbey,
+//        Buildings.Farm,
+        Buildings.Well
+        )
+//    companion object {
+//        public val context = applicationConext
+//    }
+
+
+    var actualBuilding : Buildings? = null
     var constSizeResource = 150
     lateinit var choices : MutableMap<String,View>
     lateinit var buildings : MutableMap<String,View>
     var previousView: View? = null
     lateinit var actual_resurse : Drawable
-
+    var selectedList : MutableList<ImageView> = mutableListOf()
     var actualResourceName : String = "Заглушка"
     lateinit var count_players: Integer
     val countCells = 16 - 1
@@ -23,29 +38,23 @@ class Game() : AppCompatActivity() {
     var actual_player: Player = Player("Default_1")
     lateinit var master : Player
     var gameBoard: MutableList<ImageView> = mutableListOf()
-    var tempGameBoard: MutableList<View> = mutableListOf()
     lateinit var toNextPlayer: Button
-    lateinit var infoPlayer: Button
     lateinit var toBuildings: Button
     lateinit var toGame: Button
     lateinit var backGame: Button
     lateinit var cancelBuilding: Button
-    lateinit var masterInfo: TextView
     private lateinit var gameView: View
     private lateinit var masterChoiseView: View
     private lateinit var buildingsLayout: View
     private var touch : Boolean = false
     private lateinit var playersNames: Array<String>
-
-    constructor(player: Player) : this() {
-        this.actual_player = player
-    }
-
     @SuppressLint("MissingInflatedId", "ResourceAsColor", "CutPasteId",
         "UseCompatLoadingForDrawables", "SuspiciousIndentation"
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Tests
+
 
         //объекты layout-ов для переключения
         gameView = layoutInflater.inflate(R.layout.activity_game, null)
@@ -63,17 +72,27 @@ class Game() : AppCompatActivity() {
         //Устанавливаются изначальные данные
         actual_player = players[0]
         master = players[0]
-        val defaultBackground = getDrawable(R.color.cell)
-        var actualBuilding : Drawable = defaultBackground!!
+        val defaultBackground = getDrawable(Resources.Default.background)
+//        var actualBuilding : Drawable = defaultBackground!!
         val selected = getDrawable(R.drawable.selected)
         val longClickListener = View.OnLongClickListener { view ->
-//        view.alpha = opacity
             if ((view.background != defaultBackground) and (!touch))  {
                 var view1 = view as ImageView
                 view1.setImageDrawable(selected)
+                selectedList.add(view)
             }
             true // Возвращаем true, чтобы показать, что событие было обработано
         }
+        val backgroundWood = getDrawable(Resources.Wood.background)
+        val backgroundBrick = getDrawable(Resources.Brick.background)
+        val backgroundStone = getDrawable(Resources.Stone.background)
+        val backgroundWheat = getDrawable(Resources.Wheat.background)
+        val backgroundGlass = getDrawable(Resources.Glass.background)
+        println("Wood : ${backgroundWood}")
+        println("Brick : ${backgroundBrick}")
+        println("Stone : ${backgroundStone}")
+        println("Wheat : ${backgroundWheat}")
+        println("Glass : ${backgroundGlass}")
 
 
         setContentView(masterChoiseView)
@@ -110,13 +129,13 @@ class Game() : AppCompatActivity() {
                     else -> "Error"
                 }
                 actual_resurse = when(key){
-                    "wood" -> getDrawable(R.color.resource_wood_color)!!
-                    "brick" -> getDrawable(R.color.resource_brick_color)!!
-                    "glass" -> getDrawable(R.color.resource_glass_color)!!
-                    "wheat" -> getDrawable(R.color.resource_wheat_color)!!
-                    "stone" -> getDrawable(R.color.resource_stone_color)!!
+                    "wood" -> backgroundWood!!
+                    "brick" -> backgroundBrick!!
+                    "stone" -> backgroundStone!!
+                    "wheat" -> backgroundWheat!!
+                    "glass" -> backgroundGlass!!
 //                    "stone" -> getDrawable(R.drawable.stone_img)!!
-                    else -> getDrawable(R.color.cell)!!
+                    else -> getDrawable(Resources.Default.background)!!
                 }
 
 
@@ -128,27 +147,28 @@ class Game() : AppCompatActivity() {
 //            value.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
 //            value.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
             value.setOnClickListener {
+                showInfo("You choose ${key}")
                 actualBuilding = when (key) {
-                    "cottage" -> getDrawable(R.drawable.test_bitmap)!!
-                    "red" -> getDrawable(R.drawable.red_building_logo)!!
-                    "gray" -> getDrawable(R.drawable.gray_building_logo)!!
-                    "orange" -> getDrawable(R.drawable.orange_building_logo)!!
-                    "green" -> getDrawable(R.drawable.green_building_logo)!!
-                    "yellow" -> getDrawable(R.drawable.yellow_buildin_logo)!!
-                    "black" -> getDrawable(R.drawable.black_building_logo)!!
+                    "cottage" -> Buildings.Cottage//getDrawable(R.drawable.cottage_ico)!!
+                    "red" -> Buildings.Farm//getDrawable(R.drawable.red_building_logo)!!
+                    "gray" -> Buildings.Well//getDrawable(R.drawable.gray_building_logo)!!
+                    "orange" -> Buildings.Abbey//getDrawable(R.drawable.orange_building_logo)!!
+                    "green" -> Buildings.Almshouse//getDrawable(R.drawable.green_building_logo)!!
+                    "yellow" -> Buildings.Theater//getDrawable(R.drawable.yellow_buildin_logo)!!
+                    "black" -> Buildings.Bank//getDrawable(R.drawable.black_building_logo)!!
 //                    "stone" -> getDrawable(R.drawable.stone_img)!!
-                    else -> defaultBackground!!
+                    else -> Buildings.Well//defaultBackground!!
                 }
             }
         }
 
+        //Кнопка к игре из Buildings
         toGame = masterChoiseView.findViewById(R.id.toGameButton)
         toGame.setOnClickListener{
             setContentView(gameView)
         }
 
 //      Связывается List<View> с view из layout
-//      И попутно присваиваем фон по умолчанию
         gameBoard.add(gameView.findViewById(R.id.cell_1_1))
         gameBoard.add(gameView.findViewById(R.id.cell_1_2))
         gameBoard.add(gameView.findViewById(R.id.cell_1_3))
@@ -166,13 +186,10 @@ class Game() : AppCompatActivity() {
         gameBoard.add(gameView.findViewById(R.id.cell_4_3))
         gameBoard.add(gameView.findViewById(R.id.cell_4_4))
 
-
-
-//
+//Для каждой игровой клетки
         for (i in gameBoard) {
-            i.background = defaultBackground
+            i.background = defaultBackground//Фон
             i.setOnClickListener {
-                i.setImageDrawable(null)
 
                 if (it.background == defaultBackground) {
                     touch = true
@@ -183,17 +200,22 @@ class Game() : AppCompatActivity() {
                     else{
                         previousView = it
                     }
-                    if (actualBuilding == defaultBackground)
-                    {
-                        println("Resurce")
-                        it.background = actual_resurse
-                    }
-                    else{
-                        println("Building")
-                        it.background = actualBuilding
-                    }
-
+                    it.background = actual_resurse
                 }
+                if ((i.drawable != null) and (actualBuilding != null)){
+                    println("1")
+                    if (verification(backgroundWood,backgroundBrick,backgroundStone,backgroundWheat,backgroundGlass)){
+                        println("2")
+                        for (view in selectedList){
+                            view.background = defaultBackground
+                            view.setImageDrawable(null)
+                        }
+                        selectedList.clear()
+                        i.background = getDrawable(actualBuilding!!.background)
+                    }
+                }
+                i.setImageDrawable(null)
+                selectedList.remove(i)
             }
             i.setOnLongClickListener(longClickListener)
         }
@@ -212,7 +234,7 @@ class Game() : AppCompatActivity() {
         toNextPlayer.setOnClickListener {
             if (touch){
                 saveBoard()
-                actualBuilding = defaultBackground!!
+                actualBuilding = null
                 previousView = null
                 if (actual_player  == players.last()){
                     master = players[(master.number) % players.size]
@@ -243,8 +265,10 @@ class Game() : AppCompatActivity() {
         }
         cancelBuilding = buildingsLayout.findViewById(R.id.cancelButton)
         cancelBuilding.setOnClickListener{
-            actualBuilding = defaultBackground!!
+            showInfo()
+            actualBuilding = null
         }
+
     }
 
     private fun loadGame(){
@@ -261,7 +285,6 @@ class Game() : AppCompatActivity() {
     private fun loadBoard(){
         for (i in 0..countCells)
             gameBoard.get(i).background = actual_player.field.get(i).background
-        println("6")
     }
 
 
@@ -289,5 +312,71 @@ class Game() : AppCompatActivity() {
         if (txt != null)
             txt?.text = "Player : ${actual_player.name}\nMaster ${master.name} selected ${actualResourceName}"
     }
+    private fun showInfo(string : String){
+        val txt: TextView? = gameView.findViewById(R.id.info_message)
+        if (txt != null)
+            txt?.text = string
+    }
+    fun verification(
+        backgroundWood : Drawable?,
+        backgroundBrick : Drawable?,
+        backgroundStone : Drawable?,
+        backgroundWheat : Drawable?,
+        backgroundGlass : Drawable?
+    ) : Boolean{
+        println("Wood2 : ${backgroundWood}")
+        println("Brick2 : ${backgroundBrick}")
+        println("Stone2 : ${backgroundStone}")
+        println("Wheat2 : ${backgroundWheat}")
+        println("Glass2 : ${backgroundGlass}")
+
+        var testList : MutableList<Drawable?> = mutableListOf()
+        for (i in actualBuilding!!.resources){
+            testList.add(when (i){
+                Resources.Wood.background -> backgroundWood
+                Resources.Brick.background -> backgroundBrick
+                Resources.Stone.background -> backgroundStone
+                Resources.Wheat.background -> backgroundWheat
+                Resources.Glass.background -> backgroundGlass
+                else -> backgroundBrick
+            })
+        }
+
+        println("testList : ${testList}")
+//        val resources: MutableList<Drawable?> = actualBuilding?.resources?.map{ elem ->
+//            getDrawable(elem)
+//        }!!.toMutableList()
+        println("Resources : ")
+//        for(elem in resources) {
+//            println(elem)}
+        var tempList = selectedList.toMutableList()
+        for (i in selectedList) println(i.background)
+//        println("SelectedList : ${selectedList}")
+//        println("ResourcesList : ${resources}")
+        if (tempList.size == testList.size){
+            println("Size == ")
+            for (resource in testList){
+                println("resource from testList : ${resource}")
+
+                for (value in tempList){
+                    println("Value from selectedList : ${value}")
+                    if (value.background == resource){
+                        println("resource == value : ${resource} == ${value}")
+                        println("SelectedList.size before = ${tempList.size}")
+                        tempList.remove(value)
+                        println("SelectedList.size after = ${tempList.size}")
+                        break
+                    }
+                }
+            }
+            if (tempList.size == 0) {
+                println("RETURN TRUE")
+                return true
+            }
+        }
+        return false
+//        actualBuilding?.verification(selectedList)
+    }
+
 }
 
